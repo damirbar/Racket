@@ -41,7 +41,7 @@
 
 (: every? : (All (A) (A -> Boolean) (Listof A) -> Boolean))
 ;; See explanation about the All syntax at the end of the file...
-;; Input: A custom condition and a list.
+;; Input: A custom condition as a boolean function and a list.
 ;; Output: A boolean, True or False.
 ;; Operation: This function checks the given condition "pred" on every element within the list. It does so by
 ;;   checking if the first element suffices the condition and then applies this function recursively by calling
@@ -74,10 +74,25 @@
 
 (: every2? : (All (A B) (A -> Boolean) (B -> Boolean) (Listof A) (Listof B) ->
 Boolean))
-;; << Add your comments here>>
-;; << Add your comments here>>
+;; Input: Two custom conditions as boolean functions and two lists, assumingly of same length.
+;; Output: A boolean, True or False.
+;; Operation: This function checks if the condition "pred1" applies on every element of the list "lst1", AND if the
+;;   condition "pred2" applies on every element of the list "lst2". If so, it will return True. Otherwise it will
+;;   return false. It does so by checking if the first element of "lst1" suffices "pred1 and if the first element
+;;   of "lst2" suffices "pred2" and then applies this function recursively by calling it on the rest of the lists.
 (define (every2? pred1 pred2 lst1 lst2)
- (or (null? lst1) ;; both lists assumed to be of same length
+ (or (null? lst1)
  (and (pred1 (first lst1))
  (pred2 (first lst2))
  (every2? pred1 pred2 (rest lst1) (rest lst2)))))
+
+
+
+;; My function and tests:
+(: all-even-odd? : (Listof Natural) (Listof Natural) -> Boolean)
+(define (all-even-odd? lst1 lst2)
+ (every2? is-even? is-odd? lst1 lst2))
+
+
+(test (all-even-odd? (list 2 4 6 8) (list 1 3 5 7)))
+(test (all-even-odd? (list 1 3 5 7) (list 2 4 6 8)) => #f)
