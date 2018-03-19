@@ -1,0 +1,31 @@
+#lang pl
+;;Q2b
+
+;;Q1 part:
+(: min&max_tail_rec : Number Number (Listof Number) -> (Listof Number))
+(define (min&max_tail_rec min max array)
+  (if (null? array)
+      (list min max)
+      (if (< (first array) min)
+          (min&max_tail_rec (first array) max array)
+          (if (> (first array) max)
+              (min&max_tail_rec min (first array) array)
+              (min&max_tail_rec min max (rest array))))))
+
+
+(: min&max_list_taker : (Listof Number) -> (Listof Number))
+(define (min&max_list_taker array)
+  (min&max_tail_rec (first array) (first array) (rest array)))
+
+
+
+(: sublist-helper : (Listof Any) (Listof Number) -> (Listof Number))
+(define (sublist-helper complex-list num-list)
+  (if (null? complex-list) num-list
+  (if (number? (first complex-list)) (sublist-helper (rest complex-list) (append (list (first complex-list)) num-list))
+           (sublist-helper (rest complex-list) num-list))))
+
+
+(: sublist-numbers : (Listof Any) -> (Listof Number))
+(define (sublist-numbers complex-list)
+  (sublist-helper complex-list null))

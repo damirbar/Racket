@@ -1,0 +1,11 @@
+#lang pl
+
+
+(: min&max_tail_rec : (Number Number (Listof Number)) -> (Listof Number))
+(define (min&max_tail_rec min max list)
+  
+
+
+(: min&max : (Listof Number) -> (Listof Number))
+(define (min&max array)
+  (
