@@ -1,5 +1,26 @@
 #lang pl
-;;Q2b
+
+#|
+
+Question 2b:
+
+Solution description:
+In this solution I created 2 functions:
+
+1) min&max-lists-helper:
+   Input: Two lists. One contains lists of any type, and one containing lists of two numbers.
+   Output: A list which contains lists of two numbers - minimum and maximum - for every given complex list.
+   Operation: This function uses the function from the previous questions, by checking if an element is a number and by checking
+     minimality and maximality. Then it returns the list of the lists of the minimum and maximum.
+
+2) min&max-lists:
+   Input: A list of lists of any type.
+   Output: A list of list of numbers. A list of minimum and maximum for every list within the given list.
+   Operation: This function calls the function "min&max-lists-helper" with the given list and with an initial empty list (null) which
+     will be filled with the lists of minimums and maximums by "min&max-lists-helper".
+
+|#
+
 
 ;;Q1 part:
 (: min&max_tail_rec : Number Number (Listof Number) -> (Listof Number))
@@ -33,7 +54,6 @@
 
 
 ;;Q2b part:
-
 (: min&max-lists-helper : (Listof (Listof Any)) (Listof (Listof Number)) -> (Listof (Listof Number)))
 (define (min&max-lists-helper complex-list minmax-list)
   (if (null? complex-list) (reverse minmax-list)
@@ -45,7 +65,6 @@
   (if (null? complex-list) null (min&max-lists-helper complex-list null)))
 
 
-;;(min&max-lists '((any "Benny" 10 OP 8) (any "Benny" OP (2 3)) (1 hey 2 3 one 120 hey 2 3)))
 
 (test (min&max-lists '((any "Benny" 10 OP 8) (any "Benny" OP (2 3)))) => '((8 10) ()))
 (test (min&max-lists '()) => '())
