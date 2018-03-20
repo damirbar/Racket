@@ -1,6 +1,16 @@
 #lang pl
 
 
+#|
+
+Question 4:
+
+Solution description:
+In this solution I have commented an explanation of the given functions. I don't know why I was ask to write the
+comments there. I would rather write the explanations above the type declaration.
+
+
+|#
 
 
 (: is-odd? : Natural -> Boolean)
