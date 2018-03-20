@@ -5,7 +5,7 @@
 Question 2:
 
 Solution description:
-In this solution I created 3 functions:
+In this solution I created 2 functions:
 
 1) sublist-helper:
    Input: Two lists, one of any type and one of numbers.
