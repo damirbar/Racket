@@ -2,7 +2,7 @@
 
 #|
 
-Question 2:
+Question 2a:
 
 Solution description:
 In this solution I created 2 functions:
