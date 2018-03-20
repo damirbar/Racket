@@ -1,5 +1,27 @@
 #lang pl
-;;Q2A
+
+#|
+
+Question 2:
+
+Solution description:
+In this solution I created 3 functions:
+
+1) sublist-helper:
+   Input: Two lists, one of any type and one of numbers.
+   Output: A list which contains the numbers from the first list.
+   Operation: This function recursively checks if the first element is a number. If it is, it will append it to the current
+     number list and call recursively to itself with the first list without the first element an with the new appended number
+     list. If it isn't a number, it will call recursively to itself with the first list without the first element an with the
+     same number list.
+
+2) sublist-numbers:
+   Input: A list of any type.
+   Output: A list of numbers.
+   Operation: This function calls the function "sublist-helper" with the given list and with an initial empty list (null) which
+     will be filled with the numbers by "sublist-helper"
+
+|#
 
 
 (: sublist-helper : (Listof Any) (Listof Number) -> (Listof Number))
@@ -14,9 +36,7 @@
   (sublist-helper complex-list null))
 
 
-;;(sublist-numbers (list 'any "Benny" 10 'OP 8))
-;;(sublist-numbers '('any "Benny" OP (2 3)))
-;;(sublist-numbers '('any 9 "Benny" 2 OP 156 (2 3) 800))
+
 (test (sublist-numbers (list 'any "Benny" 10 'OP 8)) => '(8 10))
 (test (sublist-numbers '('any "Benny" OP (2 3))) => null)
 (test (sublist-numbers '('any 9 "Benny" 2 OP 156 (2 3) 800)) => '(800 156 2 9))
