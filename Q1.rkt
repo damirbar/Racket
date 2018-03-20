@@ -1,5 +1,8 @@
 #lang pl
+
 #|
+
+Question 1:
 
 Solution description:
 In this solution I created 3 functions:
